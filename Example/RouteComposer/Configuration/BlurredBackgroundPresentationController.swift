@@ -36,7 +36,7 @@ class BlurredBackgroundTransitionAnimator: NSObject, UIViewControllerAnimatedTra
         return 0.3
     }
     
-    private func blurEffectView(_ style: UIBlurEffectStyle = .light, frame: CGRect? = nil, backgroundColor: UIColor?) -> UIVisualEffectView {
+    private func blurEffectView(_ style: UIBlurEffect.Style = .light, frame: CGRect? = nil, backgroundColor: UIColor?) -> UIVisualEffectView {
         let blurEffect = UIBlurEffect(style: style)
         let blurEffectView = UIVisualEffectView(effect: blurEffect)
         if let frame = frame {
@@ -71,7 +71,7 @@ class BlurredBackgroundTransitionAnimator: NSObject, UIViewControllerAnimatedTra
         let backgroundColor = UIColor.white
         let blurEffect = blurEffectView(backgroundColor: backgroundColor)
         transitionContext.containerView.addSubview(blurEffect)
-        transitionContext.containerView.sendSubview(toBack: blurEffect)
+        transitionContext.containerView.sendSubviewToBack(blurEffect)
         stretchToView(blurEffect, to: transitionContext.containerView)
         let effect: UIBlurEffect? = transitionType == .present ? UIBlurEffect(style: .extraLight) : nil
         blurEffect.alpha = initialAlpha
